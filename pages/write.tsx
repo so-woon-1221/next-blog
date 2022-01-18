@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { themeState } from "../atom/theme";
-import { post } from "../atom/post";
 import Head from "next/head";
 
 const DarkEditor = dynamic(() => import("../components/DarkEditor"), {
@@ -12,7 +11,7 @@ const Editor = dynamic(() => import("../components/Editor"), { ssr: false });
 
 const Write: React.FC = () => {
   const [title, setTitle] = useState<string>("");
-  const [markdown, setMarkdown] = useRecoilState(post);
+  const [markdown, setMarkdown] = useState<string>("");
   const theme = useRecoilValue(themeState);
   const editorRef = useRef<any>(null);
 

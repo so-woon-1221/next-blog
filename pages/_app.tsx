@@ -8,7 +8,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <RecoilRoot>
         <Header />
-        <div style={{ maxWidth: "768px", margin: "0 auto" }}>
+        <div
+          style={{ maxWidth: "768px", margin: "0 auto" }}
+          className="md:px-0 px-4"
+        >
           <Component {...pageProps} />
         </div>
       </RecoilRoot>

@@ -1,14 +1,17 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Header from "../components/Header";
+import { RecoilRoot } from "recoil";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Header />
-      <div style={{ maxWidth: "768px", margin: "0 auto" }}>
-        <Component {...pageProps} />
-      </div>
+      <RecoilRoot>
+        <Header />
+        <div style={{ maxWidth: "768px", margin: "0 auto" }}>
+          <Component {...pageProps} />
+        </div>
+      </RecoilRoot>
     </>
   );
 }

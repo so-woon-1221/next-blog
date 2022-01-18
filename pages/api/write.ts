@@ -3,10 +3,10 @@ import fs from "fs";
 import matter from "gray-matter";
 
 const writePost = (req: NextApiRequest, res: NextApiResponse) => {
-  //   fs.writeFileSync("./posts/test.md", "aa");
-  const file = fs.readFileSync("./posts/test.md");
+  const { title, post } = req.body;
+  const file = fs.writeFileSync(`./posts/${title}.md`, post);
 
-  return res.json(matter(file, { excerpt: true }));
+  return res.json("저장완료");
 };
 
 export default writePost;

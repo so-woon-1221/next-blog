@@ -1,6 +1,5 @@
 import React from "react";
 import { Editor as MarkdownEditor } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 import Prism from "prismjs";
 import "prismjs/themes/prism-funky.css";
@@ -16,7 +15,7 @@ interface Props {
   title: string;
 }
 
-const Editor: React.FC<Props> = ({
+const DarkEditor: React.FC<Props> = ({
   setMarkdown,
   markdown,
   editorRef,
@@ -26,7 +25,7 @@ const Editor: React.FC<Props> = ({
     <div className="w-full h-full space-y-4">
       <MarkdownEditor
         previewStyle="vertical"
-        theme="light"
+        theme="dark"
         height="70vh"
         initialValue={markdown}
         ref={editorRef}
@@ -37,7 +36,7 @@ const Editor: React.FC<Props> = ({
         plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
       />
       <button
-        className="bg-zinc-200 px-4 py-2 rounded float-right"
+        className="dark:bg-zinc-900 px-4 py-2 rounded float-right"
         onClick={async () => {
           const editor = editorRef.current.getInstance();
           const post = editor.getMarkdown();
@@ -46,7 +45,7 @@ const Editor: React.FC<Props> = ({
             const response = await axios.post("/api/write", { title, post });
             window.alert(response.data);
           } else {
-            window.alert('제목과 내용을 입력하세요')
+            window.alert("제목과 내용을 입력하세요");
           }
         }}
       >
@@ -56,4 +55,4 @@ const Editor: React.FC<Props> = ({
   );
 };
 
-export default Editor;
+export default DarkEditor;

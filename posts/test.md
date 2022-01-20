@@ -4,7 +4,6 @@ slug: hee
 category: gg
 ---
 안녕 
-----
 
 ## hi
 

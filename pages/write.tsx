@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../atom/theme";

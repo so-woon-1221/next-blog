@@ -22,6 +22,16 @@ const Editor: React.FC<Props> = ({
   editorRef,
   title,
 }) => {
+  const sendImage = async (img: Blob | File) => {
+    const formData = new FormData();
+    formData.append("image", img);
+    const result = await axios.post("/api/image", formData, {
+      headers: { "Content-type": "multipart/form-data" },
+    });
+
+    return result.data;
+  };
+  
   return (
     <div className="w-full h-full space-y-4">
       <MarkdownEditor
@@ -35,6 +45,18 @@ const Editor: React.FC<Props> = ({
           setMarkdown(editor.getMarkdown());
         }, 500)}
         plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
+        hooks={{
+          addImageBlobHook: async (blob, callback) => {
+            if (blob.size > 5 * 1024 * 1024) {
+              alert("용량 초과");
+            } else {
+              const upload = await sendImage(blob);
+
+              callback(upload.data, "alt text");
+            }
+            return false;
+          },
+        }}
       />
       <button
         className="bg-zinc-200 px-4 py-2 rounded float-right"
@@ -46,7 +68,7 @@ const Editor: React.FC<Props> = ({
             const response = await axios.post("/api/write", { title, post });
             window.alert(response.data);
           } else {
-            window.alert('제목과 내용을 입력하세요')
+            window.alert("제목과 내용을 입력하세요");
           }
         }}
       >

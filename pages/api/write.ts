@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
-import matter from "gray-matter";
+// import matter from "gray-matter";
+
 
 const writePost = (req: NextApiRequest, res: NextApiResponse) => {
   const { title, post } = req.body;

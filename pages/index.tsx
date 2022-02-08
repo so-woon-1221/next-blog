@@ -7,7 +7,7 @@ const index = ({ posts }: { posts: any }) => {
   console.log(posts);
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-12">
       {posts.map(
         (
           d: {
@@ -23,10 +23,13 @@ const index = ({ posts }: { posts: any }) => {
           i: number
         ) => {
           return (
-            <div key={`post-${i}`} className="cursor-pointer space-y-2">
+            <div
+              key={`post-${i}`}
+              className="cursor-pointer space-y-2 px-4 py-4 hover:shadow-md"
+            >
               <Link href={`/post/${d.name}`} passHref>
                 <div className="flex">
-                  <h2 className="font-bold flex-grow text-lg">
+                  <h2 className="font-bold flex-grow text-xl">
                     {d.data?.data?.title}
                   </h2>
                   <div className="text-sm text-gray-500">
@@ -43,7 +46,7 @@ const index = ({ posts }: { posts: any }) => {
                         key={`post-${i}-category-${i}`}
                         className="bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded-lg"
                       >
-                        # {d}
+                        # {d.trim()}
                       </div>
                     );
                   })}

@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <RecoilRoot>
         <Header />
         <div
-          style={{ maxWidth: "768px", margin: "0 auto" }}
+          style={{ maxWidth: "calc(768px + 1rem)", margin: "0 auto" }}
           className="md:px-0 px-4 py-8"
         >
           <Component {...pageProps} />

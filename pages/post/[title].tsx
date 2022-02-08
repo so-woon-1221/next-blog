@@ -1,17 +1,15 @@
 import axios from "axios";
 import React from "react";
-import dynamic from "next/dynamic";
 import Head from "next/head";
-
-const Viewer = dynamic(() => import("../../components/Viewer"), { ssr: false });
+import { marked } from "marked";
 
 const Title = ({ params, data }: any) => {
   return (
-    <div className="prose">
+    <div className="prose prose-slate">
       <Head>
         <title>{params.title}</title>
       </Head>
-      <Viewer content={data.content} />
+      <div dangerouslySetInnerHTML={{ __html: marked(data.content) }}></div>
     </div>
   );
 };

@@ -8,7 +8,10 @@ const getPosts = (req: NextApiRequest, res: NextApiResponse) => {
   const posts = [];
 
   for (let file of fileList) {
-    posts.push(matter(fs.readFileSync(`./posts/${file}`)));
+    posts.push({
+      name: file.split(".")[0],
+      data: matter(fs.readFileSync(`./posts/${file}`)),
+    });
   }
 
   return res.json({ data: posts });

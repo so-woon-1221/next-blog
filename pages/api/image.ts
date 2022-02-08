@@ -26,7 +26,7 @@ const apiRoute = nextConnect({
 });
 
 apiRoute.post(upload.single("image"), (req, res) => {
-  res.json({ data: req.file?.filename });
+  res.json({ data: "http://localhost:3000/" + req.file?.filename });
 });
 
 export default apiRoute;

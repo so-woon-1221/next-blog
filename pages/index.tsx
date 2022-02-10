@@ -7,7 +7,7 @@ const index = ({ posts }: { posts: any }) => {
   console.log(posts);
 
   return (
-    <div className="space-y-12">
+    <div className="">
       {posts.map(
         (
           d: {
@@ -23,11 +23,8 @@ const index = ({ posts }: { posts: any }) => {
           i: number
         ) => {
           return (
-            <div
-              key={`post-${i}`}
-              className="cursor-pointer space-y-2 px-4 py-4 hover:shadow-md"
-            >
-              <Link href={`/post/${d.name}`} passHref>
+            <Link href={`/post/${d.name}`} passHref key={`post-${i}`}>
+              <div className="cursor-pointer space-y-2 px-4 py-8 hover:shadow-md rounded">
                 <div className="flex">
                   <h2 className="font-bold flex-grow text-xl">
                     {d.data?.data?.title}
@@ -36,22 +33,26 @@ const index = ({ posts }: { posts: any }) => {
                     {d.data?.data?.date?.substr(0, 10)}
                   </div>
                 </div>
-              </Link>
-              <div className="flex space-x-2">
-                {d.data?.data?.category
-                  .split(",")
-                  .map((d: string, i: number) => {
-                    return (
-                      <div
-                        key={`post-${i}-category-${i}`}
-                        className="bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded-lg"
-                      >
-                        # {d.trim()}
-                      </div>
-                    );
-                  })}
+
+                <div className="flex space-x-2">
+                  {d.data?.data?.category
+                    .split(",")
+                    .map((d: string, i: number) => {
+                      return (
+                        <Link
+                          href="/aa"
+                          passHref
+                          key={`post-${i}-category-${i}`}
+                        >
+                          <div className="bg-zinc-100 dark:bg-zinc-900 px-2 py-0.5 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-700">
+                            # {d.trim()}
+                          </div>
+                        </Link>
+                      );
+                    })}
+                </div>
               </div>
-            </div>
+            </Link>
           );
         }
       )}

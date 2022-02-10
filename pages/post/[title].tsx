@@ -5,7 +5,7 @@ import { marked } from "marked";
 
 const Title = ({ params, data }: any) => {
   return (
-    <div className="prose prose-slate">
+    <div className="prose prose-slate px-4">
       <Head>
         <title>{params.title}</title>
       </Head>

@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Header />
         <div
           style={{ maxWidth: "calc(768px + 1rem)", margin: "0 auto" }}
-          className="md:px-0 px-4 py-8"
+          className="px-0 py-6"
         >
           <Component {...pageProps} />
         </div>

@@ -21,7 +21,11 @@ const Tag: React.FC = ({ data }: any) => {
 };
 
 export const getStaticPaths = async () => {
-  const response = await axios.get("/api/tags");
+  const response = await axios.get(
+    `${
+      development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
+    }/api/tags`
+  );
   const tags = response.data;
 
   const paths = tags.data.map((d: any) => ({

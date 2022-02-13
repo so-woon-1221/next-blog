@@ -1,6 +1,8 @@
 import React from "react";
-import { axios } from "@lib/axios";
+import axios from "axios";
 import Link from "next/link";
+
+const development = process.env.NODE_ENV !== "production";
 
 interface Props {
   data: { category: string; data: any[] }[];
@@ -48,7 +50,13 @@ const Tag: React.FC<Props> = ({ data }) => {
 };
 
 export const getStaticProps = async () => {
-  const response = await axios.get(encodeURI(`/api/tags`));
+  const response = await axios.get(
+    encodeURI(
+      `${
+        development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
+      }/api/tags`
+    )
+  );
 
   const posts = response.data;
   return { props: { data: posts.data } };

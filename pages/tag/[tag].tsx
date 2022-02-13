@@ -1,6 +1,8 @@
-import { axios } from "@lib/axios";
+import axios from "axios";
 import React from "react";
 import PostBlock from "../../components/PostBlock";
+
+const development = process.env.NODE_ENV !== "production";
 
 const Tag: React.FC = ({ data }: any) => {
   console.log(data);
@@ -32,7 +34,13 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: any) => {
-  const response = await axios.get(encodeURI(`/api/tag?tag=${params.tag}`));
+  const response = await axios.get(
+    encodeURI(
+      `${
+        development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
+      }/api/tag?tag=${params.tag}`
+    )
+  );
 
   const posts = response.data;
   return { props: { data: posts } };

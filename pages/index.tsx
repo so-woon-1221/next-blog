@@ -1,7 +1,9 @@
-import { axios } from "@lib/axios";
+import axios from "axios";
 import { GetStaticProps } from "next";
 import React from "react";
 import Link from "next/link";
+
+const development = process.env.NODE_ENV !== "production";
 
 const index = ({ posts }: { posts: any }) => {
   console.log(posts);
@@ -60,7 +62,11 @@ const index = ({ posts }: { posts: any }) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await axios.get("/api/posts");
+  const response = await axios.get(
+    `${
+      development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
+    }/api/posts`
+  );
 
   const posts = response.data;
 

@@ -1,7 +1,9 @@
-import { axios } from "@lib/axios";
+import axios from "axios";
 import React from "react";
 import Head from "next/head";
 import { marked } from "marked";
+
+const development = process.env.NODE_ENV !== "production";
 
 const Title = ({ params, data }: any) => {
   // 그 h 태그 따라서 가는 거 만들어야함
@@ -31,7 +33,11 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: any) => {
   const response = await axios.get(
-    encodeURI(`/api/post?title=${params.title}`)
+    encodeURI(
+      `${
+        development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
+      }/api/post?title=${params.title}`
+    )
   );
 
   const post = response.data;

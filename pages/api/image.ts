@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import multer from "multer";
 import nextConnect from "next-connect";
 import path from "path";
@@ -30,7 +29,7 @@ const apiRoute = nextConnect({
 apiRoute.post(upload.single("image"), (req, res) => {
   res.json({
     data: development
-      ? "http://localhost:3000/"
+      ? "http://localhost:3000/" + req.file?.filename
       : "https://sowoon-1221.vercel.app" + req.file?.filename,
   });
 });

@@ -2,9 +2,10 @@ import matter from "gray-matter";
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 import { rollups } from "d3";
+import { join } from "path";
 
 const getTagPost = (req: NextApiRequest, res: NextApiResponse) => {
-  const fileList = fs.readdirSync("/posts");
+  const fileList = fs.readdirSync(join(__dirname + "/posts"));
 
   let posts = [];
 

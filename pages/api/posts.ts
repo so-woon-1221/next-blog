@@ -1,9 +1,10 @@
 import matter from "gray-matter";
 import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
+import { join } from "path";
 
 const getPosts = (req: NextApiRequest, res: NextApiResponse) => {
-  const fileList = fs.readdirSync("/posts");
+  const fileList = fs.readdirSync(join(__dirname + "/posts"));
   console.log(__dirname + "../../");
 
   const posts = [];

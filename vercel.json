@@ -1,0 +1,22 @@
+{
+    "functions": {
+        "api/images.ts": {
+            "includeFiles": "/posts/**"
+        },
+        "api/post.ts": {
+            "includeFiles": "/posts/**"
+        },
+        "api/posts.ts": {
+            "includeFiles": "/posts/**"
+        },
+        "api/tag.ts": {
+            "includeFiles": "/posts/**"
+        },
+        "api/tags.ts": {
+            "includeFiles": "/posts/**"
+        },
+        "api/write.ts": {
+            "includeFiles": "/posts/**"
+        }
+    }
+}

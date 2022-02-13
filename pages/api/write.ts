@@ -6,7 +6,7 @@ import { join } from "path";
 const writePost = (req: NextApiRequest, res: NextApiResponse) => {
   const { title, post } = req.body;
   const file = fs.writeFileSync(
-    join(`/posts/${title.replace(/ /g, "")}.md`),
+    join(`/posts`, `${title.replace(/ /g, "")}.md`),
     post
   );
 

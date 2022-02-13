@@ -4,6 +4,7 @@ import fs from "fs";
 import { rollups } from "d3";
 
 const getTagPost = (req: NextApiRequest, res: NextApiResponse) => {
+  !fs.existsSync("posts") && fs.mkdirSync("posts");
   const fileList = fs.readdirSync("posts");
 
   let posts = [];

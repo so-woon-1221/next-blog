@@ -13,7 +13,7 @@ const Footter: React.FC = () => {
         </a>
       </div>
       <div>
-        <span>@ sowoon</span>
+        <span>@sowoon</span>
       </div>
     </div>
   );

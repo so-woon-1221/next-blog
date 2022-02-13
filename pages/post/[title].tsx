@@ -19,7 +19,11 @@ const Title = ({ params, data }: any) => {
 };
 
 export const getStaticPaths = async () => {
-  const response = await axios.get("/api/posts");
+  const response = await axios.get(
+    `${
+      development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
+    }/api/posts`
+  );
   const posts = response.data;
 
   const paths = posts.data.map((d: any) => ({

@@ -6,7 +6,7 @@ import { join } from "path";
 
 const getPost = (req: NextApiRequest, res: NextApiResponse) => {
   const { tag } = req.query;
-  const fileList = fs.readdirSync(join("/posts"));
+  const fileList = fs.readdirSync(join(__dirname + "/posts"));
 
   let posts = [];
 

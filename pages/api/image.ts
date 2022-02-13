@@ -3,6 +3,8 @@ import multer from "multer";
 import nextConnect from "next-connect";
 import path from "path";
 
+const development = process.env.NODE_ENV !== "production";
+
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
@@ -26,7 +28,11 @@ const apiRoute = nextConnect({
 });
 
 apiRoute.post(upload.single("image"), (req, res) => {
-  res.json({ data: "http://localhost:3000/" + req.file?.filename });
+  res.json({
+    data: development
+      ? "http://localhost:3000/"
+      : "https://sowoon-1221.vercel.app" + req.file?.filename,
+  });
 });
 
 export default apiRoute;

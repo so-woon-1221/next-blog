@@ -14,7 +14,9 @@ const getPosts = (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  return res.json({ data: posts });
+  return res.json({
+    data: posts.sort((a, b) => b.data.data.date - a.data.data.date),
+  });
 };
 
 export default getPosts;

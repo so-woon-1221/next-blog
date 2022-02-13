@@ -42,7 +42,9 @@ const Header: React.FC = () => {
         <Link href="/tags" passHref>
           <span className="cursor-pointer">TAGS</span>
         </Link>
-        <span className="cursor-pointer">INFO</span>
+        <Link href="/info" passHref>
+          <span className="cursor-pointer">INFO</span>
+        </Link>
       </div>
     </div>
   );

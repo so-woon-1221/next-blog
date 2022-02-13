@@ -1,4 +1,4 @@
-import axios from "axios";
+import { axios } from "@lib/axios";
 import { GetStaticProps } from "next";
 import React from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ const index = ({ posts }: { posts: any }) => {
   console.log(posts);
 
   return (
-    <div className="">
+    <div className="divide-y">
       {posts.map(
         (
           d: {
@@ -24,7 +24,7 @@ const index = ({ posts }: { posts: any }) => {
         ) => {
           return (
             <Link href={`/post/${d.name}`} passHref key={`post-${i}`}>
-              <div className="cursor-pointer space-y-2 px-4 py-8 hover:shadow-md rounded">
+              <div className="cursor-pointer space-y-2 px-4 py-8 rounded">
                 <div className="flex">
                   <h2 className="font-bold flex-grow text-xl">
                     {d.data?.data?.title}
@@ -40,7 +40,7 @@ const index = ({ posts }: { posts: any }) => {
                     .map((d: string, i: number) => {
                       return (
                         <Link
-                          href="/aa"
+                          href={`/tag/${d.trim()}`}
                           passHref
                           key={`post-${i}-category-${i}`}
                         >
@@ -60,7 +60,7 @@ const index = ({ posts }: { posts: any }) => {
   );
 };
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await axios.get("http://localhost:3000/api/posts");
+  const response = await axios.get("/api/posts");
 
   const posts = response.data;
 

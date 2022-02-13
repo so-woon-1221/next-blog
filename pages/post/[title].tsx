@@ -1,9 +1,11 @@
-import axios from "axios";
+import { axios } from "@lib/axios";
 import React from "react";
 import Head from "next/head";
 import { marked } from "marked";
 
 const Title = ({ params, data }: any) => {
+  // 그 h 태그 따라서 가는 거 만들어야함
+  // 클릭 네비게이터
   return (
     <div className="prose prose-slate px-4">
       <Head>
@@ -15,7 +17,7 @@ const Title = ({ params, data }: any) => {
 };
 
 export const getStaticPaths = async () => {
-  const response = await axios.get("http://localhost:3000/api/posts");
+  const response = await axios.get("/api/posts");
   const posts = response.data;
 
   const paths = posts.data.map((d: any) => ({
@@ -29,7 +31,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: any) => {
   const response = await axios.get(
-    encodeURI(`http://localhost:3000/api/post?title=${params.title}`)
+    encodeURI(`/api/post?title=${params.title}`)
   );
 
   const post = response.data;

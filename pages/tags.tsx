@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import { axios } from "@lib/axios";
 import Link from "next/link";
 
 interface Props {
@@ -12,7 +12,9 @@ const Tag: React.FC<Props> = ({ data }) => {
       {data.map((d, i) => {
         return (
           <div key={`tag-${i}`} className="space-y-4 py-8 px-4">
-            <h2 className="text-xl font-bold cursor-default"># {d.category}</h2>
+            <h2 className="text-2xl font-bold cursor-default">
+              # {d.category}
+            </h2>
             <div className="space-y-3">
               {d.data
                 .sort(
@@ -46,7 +48,7 @@ const Tag: React.FC<Props> = ({ data }) => {
 };
 
 export const getStaticProps = async () => {
-  const response = await axios.get(encodeURI(`http://localhost:3000/api/tags`));
+  const response = await axios.get(encodeURI(`/api/tags`));
 
   const posts = response.data;
   return { props: { data: posts.data } };

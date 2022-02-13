@@ -5,14 +5,14 @@ import { rollups } from "d3";
 
 const getPost = (req: NextApiRequest, res: NextApiResponse) => {
   const { tag } = req.query;
-  const fileList = fs.readdirSync("./posts");
+  const fileList = fs.readdirSync("posts");
 
   let posts = [];
 
   for (let file of fileList) {
     posts.push({
       name: file.split(".")[0],
-      data: matter(fs.readFileSync(`./posts/${file}`)),
+      data: matter(fs.readFileSync(`posts/${file}`)),
     });
   }
 

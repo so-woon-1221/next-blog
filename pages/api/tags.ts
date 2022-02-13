@@ -4,14 +4,14 @@ import fs from "fs";
 import { rollups } from "d3";
 
 const getTagPost = (req: NextApiRequest, res: NextApiResponse) => {
-  const fileList = fs.readdirSync("./posts");
+  const fileList = fs.readdirSync("posts");
 
   let posts = [];
 
   for (let file of fileList) {
     posts.push({
       name: file.split(".")[0],
-      data: matter(fs.readFileSync(`./posts/${file}`)),
+      data: matter(fs.readFileSync(`posts/${file}`)),
     });
   }
 

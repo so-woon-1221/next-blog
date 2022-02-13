@@ -7,7 +7,7 @@ const development = process.env.NODE_ENV !== "production";
 const upload = multer({
   storage: multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, "./public");
+      cb(null, "public");
     },
     filename: (req, file, cb) => {
       cb(

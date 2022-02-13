@@ -3,8 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import fs from "fs";
 
 const getPosts = (req: NextApiRequest, res: NextApiResponse) => {
-  !fs.existsSync("posts") && fs.mkdirSync("posts");
-  const fileList = fs.readdirSync("posts");
+  const fileList = fs.readdirSync("/posts");
   console.log(__dirname + "../../");
 
   const posts = [];

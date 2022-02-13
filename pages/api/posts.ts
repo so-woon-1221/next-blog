@@ -4,7 +4,8 @@ import fs from "fs";
 import { join } from "path";
 
 const getPosts = (req: NextApiRequest, res: NextApiResponse) => {
-  const fileList = fs.readdirSync(join(__dirname + "/posts"));
+  !fs.existsSync(join("/posts")) && fs.mkdirSync(join("/posts"));
+  const fileList = fs.readdirSync(join("/posts"));
   console.log(__dirname + "../../");
 
   const posts = [];

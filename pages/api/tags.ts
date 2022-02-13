@@ -5,7 +5,7 @@ import { rollups } from "d3";
 import { join } from "path";
 
 const getTagPost = (req: NextApiRequest, res: NextApiResponse) => {
-  const fileList = fs.readdirSync(join(__dirname + "/posts"));
+  const fileList = fs.readdirSync(join( "/posts"));
 
   let posts = [];
 

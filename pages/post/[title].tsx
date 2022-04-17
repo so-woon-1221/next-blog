@@ -21,8 +21,8 @@ const Title = ({ params, data }: any) => {
 export const getStaticPaths = async () => {
   const response = await axios.get(
     `${
-      development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
-    }/api/posts`
+      development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+    }/posts`
   );
   const posts = response.data;
 
@@ -39,8 +39,8 @@ export const getStaticProps = async ({ params }: any) => {
   const response = await axios.get(
     encodeURI(
       `${
-        development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
-      }/api/post?title=${params.title}`
+        development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+      }/post?title=${params.title}`
     )
   );
 

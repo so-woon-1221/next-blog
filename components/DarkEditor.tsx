@@ -6,7 +6,8 @@ import "prismjs/themes/prism-funky.css";
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import _ from "lodash";
-import axios from "axios";
+import { axios } from "../lib/axios";
+import { useRouter } from "next/router";
 
 interface Props {
   setMarkdown: any;
@@ -21,10 +22,12 @@ const DarkEditor: React.FC<Props> = ({
   editorRef,
   title,
 }) => {
+  const router = useRouter();
+
   const sendImage = async (img: Blob | File) => {
     const formData = new FormData();
     formData.append("image", img);
-    const result = await axios.post("/api/image", formData, {
+    const result = await axios.post("/image", formData, {
       headers: { "Content-type": "multipart/form-data" },
     });
 
@@ -64,8 +67,9 @@ const DarkEditor: React.FC<Props> = ({
           const post = editor.getMarkdown();
 
           if (title !== "" && post !== "") {
-            const response = await axios.post("/api/write", { title, post });
+            const response = await axios.post("/write", { title, post });
             window.alert(response.data);
+            router.push("/");
           } else {
             window.alert("제목과 내용을 입력하세요");
           }

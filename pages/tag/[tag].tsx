@@ -5,7 +5,7 @@ import PostBlock from "../../components/PostBlock";
 const development = process.env.NODE_ENV !== "production";
 
 const Tag: React.FC = ({ data }: any) => {
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="w-full py-8">
@@ -23,8 +23,8 @@ const Tag: React.FC = ({ data }: any) => {
 export const getStaticPaths = async () => {
   const response = await axios.get(
     `${
-      development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
-    }/api/tags`
+      development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+    }/tags`
   );
   const tags = response.data;
 
@@ -41,8 +41,8 @@ export const getStaticProps = async ({ params }: any) => {
   const response = await axios.get(
     encodeURI(
       `${
-        development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
-      }/api/tag?tag=${params.tag}`
+        development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+      }/tag?tag=${params.tag}`
     )
   );
 

@@ -11,7 +11,15 @@ const Editor = dynamic(() => import("../components/Editor"), { ssr: false });
 
 const Write: React.FC = () => {
   const [title, setTitle] = useState<string>("");
-  const [markdown, setMarkdown] = useState<string>("");
+  const [markdown, setMarkdown] = useState<string>(`\
+---
+
+title: '새로운 글'
+category: 'test'
+date: 2021-01-02
+
+---
+  `);
   const theme = useRecoilValue(themeState);
   const editorRef = useRef<any>(null);
 

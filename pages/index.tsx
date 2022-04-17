@@ -6,7 +6,7 @@ import Link from "next/link";
 const development = process.env.NODE_ENV !== "production";
 
 const index = ({ posts }: { posts: any }) => {
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <div className="divide-y">
@@ -38,7 +38,7 @@ const index = ({ posts }: { posts: any }) => {
 
                 <div className="flex space-x-2">
                   {d.data?.data?.category
-                    .split(",")
+                    ?.split(",")
                     .map((d: string, i: number) => {
                       return (
                         <Link
@@ -64,9 +64,7 @@ const index = ({ posts }: { posts: any }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const response = await axios.get(
     `${
-      development
-        ? "http://localhost:8080"
-        : "https://next-blog-back-so-woon-1221.vercel.app"
+      development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
     }/posts`
   );
 

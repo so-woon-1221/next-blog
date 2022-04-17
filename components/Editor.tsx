@@ -7,7 +7,7 @@ import "prismjs/themes/prism-funky.css";
 import "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight";
 import _ from "lodash";
-import axios from "axios";
+import { axios } from "../lib/axios";
 
 interface Props {
   setMarkdown: any;
@@ -31,7 +31,7 @@ const Editor: React.FC<Props> = ({
 
     return result.data;
   };
-  
+
   return (
     <div className="w-full h-full space-y-4">
       <MarkdownEditor

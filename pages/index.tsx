@@ -64,8 +64,10 @@ const index = ({ posts }: { posts: any }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const response = await axios.get(
     `${
-      development ? "http://localhost:3000" : "https://sowoon-1221.vercel.app"
-    }/api/posts`
+      development
+        ? "http://localhost:8080"
+        : "https://next-blog-back-so-woon-1221.vercel.app"
+    }/posts`
   );
 
   const posts = response.data;

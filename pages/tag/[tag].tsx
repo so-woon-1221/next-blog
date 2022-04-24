@@ -23,7 +23,7 @@ const Tag: React.FC = ({ data }: any) => {
 export const getStaticPaths = async () => {
   const response = await axios.get(
     `${
-      development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+      development ? "http://localhost:8080" : "https://sowoon-back.link"
     }/tags`
   );
   const tags = response.data;
@@ -41,7 +41,7 @@ export const getStaticProps = async ({ params }: any) => {
   const response = await axios.get(
     encodeURI(
       `${
-        development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+        development ? "http://localhost:8080" : "https://sowoon-back.link"
       }/tag?tag=${params.tag}`
     )
   );

@@ -9,6 +9,8 @@ import _ from "lodash";
 import { axios } from "../lib/axios";
 import { useRouter } from "next/router";
 
+const development = process.env.NODE_ENV !== "production";
+
 interface Props {
   setMarkdown: any;
   markdown: string;
@@ -30,6 +32,8 @@ const DarkEditor: React.FC<Props> = ({
     const result = await axios.post("/image", formData, {
       headers: { "Content-type": "multipart/form-data" },
     });
+
+    console.log(result + "aa");
 
     return result.data;
   };
@@ -54,7 +58,18 @@ const DarkEditor: React.FC<Props> = ({
             } else {
               const upload = await sendImage(blob);
 
-              callback(upload.data, "alt text");
+              console.log(
+                (development
+                  ? "http://localhost:8080/"
+                  : "https://sowoon-back.link/") + upload.data
+              );
+
+              callback(
+                (development
+                  ? "http://localhost:8080/"
+                  : "https://sowoon-back.link/") + upload.data,
+                "alt text"
+              );
             }
             return false;
           },

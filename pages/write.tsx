@@ -3,6 +3,9 @@ import dynamic from "next/dynamic";
 import { useRecoilValue } from "recoil";
 import { themeState } from "../atom/theme";
 import Head from "next/head";
+import { timeFormat } from "d3";
+
+const formatter = timeFormat("%Y-%m-%d");
 
 const DarkEditor = dynamic(() => import("../components/DarkEditor"), {
   ssr: false,
@@ -14,11 +17,13 @@ const Write: React.FC = () => {
   const [markdown, setMarkdown] = useState<string>(`\
 ---
 
-title: '새로운 글'
-category: 'test'
-date: 2021-01-02
+title: 
+category: 
+date: ${formatter(new Date())}
 
 ---
+
+## 
   `);
   const theme = useRecoilValue(themeState);
   const editorRef = useRef<any>(null);

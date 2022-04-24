@@ -2,6 +2,7 @@ import axios from "axios";
 import { GetStaticProps } from "next";
 import React from "react";
 import Link from "next/link";
+import Head from "next/head";
 
 const development = process.env.NODE_ENV !== "production";
 
@@ -10,6 +11,9 @@ const index = ({ posts }: { posts: any }) => {
 
   return (
     <div className="divide-y">
+      <Head>
+        <title>Sowoon</title>
+      </Head>
       {posts.map(
         (
           d: {
@@ -64,7 +68,7 @@ const index = ({ posts }: { posts: any }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const response = await axios.get(
     `${
-      development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+      development ? "http://localhost:8080" : "https://sowoon-back.link"
     }/posts`
   );
 

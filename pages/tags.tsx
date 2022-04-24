@@ -53,7 +53,7 @@ export const getStaticProps = async () => {
   const response = await axios.get(
     encodeURI(
       `${
-        development ? "http://localhost:8080" : "https://sowoon-back.vercel.app"
+        development ? "http://localhost:8080" : "https://sowoon-back.link"
       }/tags`
     )
   );
